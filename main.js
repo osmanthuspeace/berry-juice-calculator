@@ -1,11 +1,8 @@
-// main.js
 const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
+const path = require('node:path');
 
-// Enable electron-reload for hot reloading
 require('electron-reload')(__dirname, {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-    // 监视渲染进程文件，包括 HTML、JS 和 CSS
     watchRenderer: true
 });
 
@@ -13,16 +10,18 @@ require('electron-reload')(__dirname, {
 function createWindow() {
 
     const mainWindow = new BrowserWindow({
-        width: 400,
-        height: 300,
+        width: 500,
+        height: 700,
+        minWidth: 305,
+        minHeight: 500,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true, // 确保上下文隔离启用
         },
+        titleBarStyle: 'hiddenInset'
     });
 
     mainWindow.loadFile('index.html').then();
-
 
 }
 

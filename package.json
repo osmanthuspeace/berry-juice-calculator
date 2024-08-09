@@ -4,9 +4,8 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
-    "start": "tsc && electron .",
-    "dev": "tsc && concurrently \"tsc -w\" \"electron .\"",
-    "build": "tsc",
+    "start": "electron .",
+    "dev": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

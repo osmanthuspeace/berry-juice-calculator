@@ -1,15 +1,8 @@
 :root {
     --unitive-width: 300px;
 }
-html{
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-}
-body {
-    /*display: flex;*/
-    justify-content: center;
-    align-items: center;
+
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -19,7 +12,17 @@ body {
     color: white;
 }
 
+.container {
+    height: 100%;
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
 .title {
+    flex-shrink: 0;
     text-align: center;
     font-size: 16px;
     margin-top: 5px;
@@ -32,20 +35,27 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* 将所有子元素放置在底部 */
-    min-height: 100px;
+    min-height: 60px;
     position: relative;
 }
 
 .cur {
     position: absolute;
     bottom: 5px;
+    right: 5px;
+}
+
+.last {
+    position: absolute;
+    bottom: 25px;
+    right: 5px;
 }
 
 .cal {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 .conversion > div {
@@ -54,22 +64,19 @@ body {
 }
 
 .switchBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 50px;
+    margin-bottom: 1px;
 }
 
 .keyboard {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1px;
-
+    height: 50vh;
     /*aspect-ratio: 1 / 1;*/
 }
 
-.keyboard div {
+.keyboard .key, .switchBar {
     background-color: rgb(97, 99, 100);
     min-width: 30px;
     min-height: 20px;
@@ -85,20 +92,59 @@ body {
     outline: none; /* 去掉焦点时的轮廓 */
 }
 
-.keyboard div:hover, .keyboard div:focus {
+.keyboard .key:hover, .keyboard .key:focus, .switchBar:hover {
     background-color: rgb(61, 62, 62); /* 悬停和聚焦时的背景色 */
     cursor: pointer; /* 鼠标样式 */
 }
 
-.keyboard div:active {
+.keyboard .key:active, .switchBar:active {
     transform: scale(0.9); /* 点击时缩小 */
 }
 
-.keyboard div:focus {
+.keyboard .key:focus, .switchBar:focus {
     box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6); /* 聚焦时添加明显的外发光 */
 }
 
+.bit-toggle {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 2列排列 */
+    gap: 1px;
+    height: 50vh;
+}
 
-.switchBar {
-    background-color: rgb(97, 99, 100);
+.bit-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+
+.bit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%; /* 每个 bit-container 占一行的四分之一 */
+}
+
+.bit-button {
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    user-select: none;
+    width: 90%;
+    height: 40%;
+}
+
+.bit-button:hover {
+    color: #ccc;
+}
+
+.footnote {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px; /* 脚注与按钮之间的间距 */
 }
