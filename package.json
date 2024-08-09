@@ -1,0 +1,26 @@
+{
+  "name": "my-calculator",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "tsc && electron .",
+    "dev": "tsc && concurrently \"tsc -w\" \"electron .\"",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "concurrently": "^8.2.2",
+    "electron": "^31.0.2",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "conf": "^13.0.1",
+    "electron-store": "^10.0.0"
+  }
+}

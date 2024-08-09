@@ -1,0 +1,104 @@
+:root {
+    --unitive-width: 300px;
+}
+html{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+body {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: rgb(44, 46, 44);
+    color: white;
+}
+
+.title {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /*background-color: blanchedalmond;*/
+    -webkit-app-region: drag;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* 将所有子元素放置在底部 */
+    min-height: 100px;
+    position: relative;
+}
+
+.cur {
+    position: absolute;
+    bottom: 5px;
+}
+
+.cal {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.conversion > div {
+    /*background-color: aquamarine;*/
+    margin-bottom: 5px;
+}
+
+.switchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+
+    /*aspect-ratio: 1 / 1;*/
+}
+
+.keyboard div {
+    background-color: rgb(97, 99, 100);
+    min-width: 30px;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    user-select: none; /* 防止选择文本 */
+    outline: none; /* 去掉焦点时的轮廓 */
+}
+
+.keyboard div:hover, .keyboard div:focus {
+    background-color: rgb(61, 62, 62); /* 悬停和聚焦时的背景色 */
+    cursor: pointer; /* 鼠标样式 */
+}
+
+.keyboard div:active {
+    transform: scale(0.9); /* 点击时缩小 */
+}
+
+.keyboard div:focus {
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6); /* 聚焦时添加明显的外发光 */
+}
+
+
+.switchBar {
+    background-color: rgb(97, 99, 100);
+}
