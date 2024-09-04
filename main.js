@@ -10,10 +10,10 @@ require('electron-reload')(__dirname, {
 function createWindow() {
 
     const mainWindow = new BrowserWindow({
-        width: 500,
-        height: 700,
-        minWidth: 305,
-        minHeight: 500,
+        width: 455,
+        height: 600,
+        minWidth: 455,
+        minHeight: 600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true, // 确保上下文隔离启用

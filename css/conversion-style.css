@@ -1,0 +1,22 @@
+.scale {
+    min-width:50px;
+    padding-left: 15px;
+}
+
+.scale-box {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-around;*/
+}
+
+.bin-value, .dec-value, .hex-value, .oct-value {
+}
+.bin-value{
+    /*font-size: clamp(12px, 2vw, 24px);*/
+}
+.hex-value{
+    margin-bottom: 10px;
+}
+.conversion > div {
+    margin-bottom: 5px;
+}

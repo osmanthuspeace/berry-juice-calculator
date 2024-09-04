@@ -1,0 +1,44 @@
+:root {
+    --unitive-width: 300px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: rgb(44, 46, 44);
+    color: white;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.title {
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+    /*background-color: blanchedalmond;*/
+    -webkit-app-region: drag;
+}
+
+
+.cal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 1px;
+}
+
+.gap{
+    height: 10vh;
+}
