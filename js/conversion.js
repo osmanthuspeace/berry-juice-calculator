@@ -1,13 +1,16 @@
 import GlobalState from "./GlobalState.js";
 
-const binaryString1 = "00000000000000000000000000000000"; // 32位二进制值
-let bigBit1 = BigInt("0b" + binaryString1);
-
-const binaryString2 = "00000000000000000000000000000000"; // 32位二进制值
-let bigBit2 = BigInt("0b" + binaryString2);
-
 const first = document.querySelector('.output .first'); // 第一操作数
 const second = document.querySelector('.output .second .num'); // 第二操作数
+const op = document.querySelector('.output .second .op'); // 操作符
+const ans = document.querySelector('.output .ans'); // 结果
+
+document.addEventListener('stateClear', () => {
+    first.textContent = '0';
+    second.textContent = '0';
+    op.textContent = '';
+    ans.textContent = '0';
+})
 
 // 设置特定位为 1
 function setBit(bigBit, position) {
@@ -19,26 +22,49 @@ function clearBit(bigBit, position) {
     return bigBit & ~(1n << BigInt(position));
 }
 
+//确定更长的二进制数
+const len = (len1, len2) => {
+    return len1 > len2 ? len1 : len2;
+}
+
+//更新长度
+const updateLen = (firstValue, secondValue) => {
+    let len1 = firstValue.toString(2).length;
+    let len2 = secondValue.toString(2).length;
+    console.log("len: ", len1, len2);
+
+    first.textContent = firstValue.toString(2).padStart(len(len1, len2), '0');
+    second.textContent = secondValue.toString(2).padStart(len(len1, len2), '0');
+
+    GlobalState.setState({first: firstValue});
+    GlobalState.setState({second: secondValue});
+
+}
+
+//每点击一次按钮，就会调用这个函数，更新二进制数
 const conversion = (num, id, index) => {
+
+    let firstValue = GlobalState.getState("first");
+    let secondValue = GlobalState.getState("second");
 
     if (index === 1) {
         if (num === '1') {
-            bigBit1 = setBit(bigBit1, id);
+            firstValue = setBit(firstValue, id);
         } else {
-            bigBit1 = clearBit(bigBit1, id);
+            firstValue = clearBit(firstValue, id);
         }
+        console.log("bit: ", firstValue, secondValue);
 
-        first.textContent = bigBit1.toString(2);
-        GlobalState.setState({first: bigBit1});
+        updateLen(firstValue, secondValue);
+
     } else {
         if (num === '1') {
-            bigBit2 = setBit(bigBit2, id);
+            secondValue = setBit(secondValue, id);
         } else {
-            bigBit2 = clearBit(bigBit2, id);
+            secondValue = clearBit(secondValue, id);
         }
-        second.textContent = bigBit2.toString(2);
-        console.log(bigBit2);
-        GlobalState.setState({second: bigBit2});
+        updateLen(firstValue, secondValue);
+
     }
 }
 export default conversion;

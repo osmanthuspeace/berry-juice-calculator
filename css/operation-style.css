@@ -1,15 +1,16 @@
 .operation {
     flex-grow: 1;
+    overflow: hidden;
 }
 
 .keyboard {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1px;
 }
 
-.keyboard .key, .switchBar {
+.keyboard .key {
     background-color: rgb(97, 99, 100);
     min-width: 20px;
     max-height: 20px;
@@ -25,30 +26,29 @@
     outline: none; /* 去掉焦点时的轮廓 */
 }
 
-.keyboard .key:hover, .keyboard .key:focus, .switchBar:hover {
+.keyboard .key:hover, .keyboard .key:focus {
     background-color: rgb(61, 62, 62); /* 悬停和聚焦时的背景色 */
     cursor: pointer; /* 鼠标样式 */
 }
 
-.keyboard .key:active, .switchBar:active {
+.keyboard .key:active {
     transform: scale(0.9); /* 点击时缩小 */
 }
 
-.keyboard .key:focus, .switchBar:focus {
+.keyboard .key:focus {
     box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6); /* 聚焦时添加明显的外发光 */
 }
 
 .bit-toggle {
-    /*flex: 1;*/
-    /*display: grid;*/
-    /*grid-template-columns: repeat(4, 1fr); !* 2列排列 *!*/
-    /*gap: 1px;*/
+    display: flex;
+    flex-direction: column;
     height: 40vh;
+    justify-content: space-between;
+    min-height: 80%;
 }
 
 .bit-suite-1, .bit-suite-2 {
     padding-top: 20px;
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 2列排列 */
     gap: 1px;
@@ -56,14 +56,24 @@
     position: relative;
 }
 
+.bit-suite-1 {
+    padding-top: 30px;
+}
+
 .bit-title-1, .bit-title-2 {
     position: absolute;
-    top: 5px;
+    top: 6px;
+    left: 10px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.bit-title-1 {
+    top: 16px;
 }
 
 .bit-group {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 10px;
 }

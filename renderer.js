@@ -1,5 +1,5 @@
-import bitCal from "./js/bit-cal.js";
-import keyboard from "./js/keyboard.js";
+import bitCal from "./js/bit-cal-generator.js";
+import keyboard from "./js/key-listener.js";
 
 console.log("start render")
 

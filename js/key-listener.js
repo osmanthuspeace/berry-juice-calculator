@@ -8,10 +8,13 @@ export default function () {
     keys.forEach(key => {
         key.addEventListener('click', () => {
             const value = key.textContent.trim();
-            GlobalState.setState({operator: value});
-            if (value === 'Lsh' || value === 'Rsh' || value === 'Not') {
-                calculate(value);
+
+            if (value === 'C') {
+                GlobalState.clear();
+            } else if (value === '=') {
+                calculate(GlobalState.getState('operator'));
             } else {
+                GlobalState.setState({operator: value});
                 // 显示操作符
                 op.textContent = value;
                 calculate(value);
@@ -28,17 +31,8 @@ const calculate = (op) => {
     const decValue = document.querySelector('.dec-value');
     const octValue = document.querySelector('.oct-value');
     const hexValue = document.querySelector('.hex-value');
-    let result;
+    let result = BigInt(0);// 十进制的BigInt类型
     switch (op) {
-        case 'Lsh':
-            result = first << second;
-            break;
-        case 'Rsh':
-            result = first >> second;
-            break;
-        case 'Not':
-            result = ~first;
-            break;
         case 'And':
             result = first & second;
             break;
@@ -47,6 +41,15 @@ const calculate = (op) => {
             break;
         case 'Xor':
             result = first ^ second;
+            break;
+        case 'NAND':
+            result = ~(first & second);
+            break;
+        case 'NOR':
+            result = ~(first | second);
+            break;
+        case 'XNOR':
+            result = ~(first ^ second);
             break;
         default:
             result = first;
@@ -59,5 +62,4 @@ const calculate = (op) => {
     octValue.textContent = result.toString(8);
     hexValue.textContent = result.toString(16);
     answer.textContent = result.toString(2);
-    GlobalState.setState({first: result});
 }
