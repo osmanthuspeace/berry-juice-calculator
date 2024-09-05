@@ -1,6 +1,7 @@
 .operation {
     flex-grow: 1;
     overflow: hidden;
+    user-select: none;
 }
 
 .keyboard {
@@ -54,6 +55,8 @@
     gap: 1px;
     height: 20vh;
     position: relative;
+    margin-bottom: 10px;
+
 }
 
 .bit-suite-1 {
@@ -88,7 +91,7 @@
 }
 
 .bit-button {
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
     cursor: pointer;
     border-radius: 4px;

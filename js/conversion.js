@@ -1,4 +1,5 @@
 import GlobalState from "./GlobalState.js";
+import centerFn from "./center-fn.js";
 
 const first = document.querySelector('.output .first'); // 第一操作数
 const second = document.querySelector('.output .second .num'); // 第二操作数
@@ -35,7 +36,8 @@ const updateLen = (firstValue, secondValue) => {
 
     first.textContent = firstValue.toString(2).padStart(len(len1, len2), '0');
     second.textContent = secondValue.toString(2).padStart(len(len1, len2), '0');
-
+    centerFn(first);
+    centerFn(document.querySelector('.output .second .num'));
     GlobalState.setState({first: firstValue});
     GlobalState.setState({second: secondValue});
 

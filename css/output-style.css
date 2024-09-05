@@ -12,6 +12,7 @@
     justify-content: flex-end;
     align-items: center;
     letter-spacing: 1px;
+    font-family: monospace; /* 使用等宽字体 */
 }
 
 .ans {
@@ -24,7 +25,12 @@
 
 .second {
     justify-content: space-between;
+    align-items: flex-end;
     padding-bottom: 5px;
+
+}
+.num{
+    display: flex;
 }
 
 .second .op {
@@ -34,4 +40,14 @@
 
 .divider {
     border-bottom: 1px solid #ccc;
+}
+
+.group {
+    display: flex; /* 使用 flex 布局 */
+    margin-left: 5px; /* 每组之间的间距 */
+}
+
+.group span {
+    display: inline-block; /* 使用 inline-block 确保每个字符都作为独立的块 */
+    text-align: center; /* 每个字符居中 */
 }

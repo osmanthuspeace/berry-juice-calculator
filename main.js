@@ -10,9 +10,9 @@ require('electron-reload')(__dirname, {
 function createWindow() {
 
     const mainWindow = new BrowserWindow({
-        width: 500,
+        width: 550,
         height: 600,
-        minWidth: 500,
+        minWidth: 550,
         minHeight: 600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),

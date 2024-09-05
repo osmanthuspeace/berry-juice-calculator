@@ -1,4 +1,5 @@
 import GlobalState from "./GlobalState.js";
+import centerFn from "./center-fn.js";
 
 export default function () {
     const keys = document.querySelectorAll('.key'); // 所有按钮
@@ -33,23 +34,29 @@ const calculate = (op) => {
     const hexValue = document.querySelector('.hex-value');
     let result = BigInt(0);// 十进制的BigInt类型
     switch (op) {
-        case 'And':
+        case 'AND':
             result = first & second;
             break;
-        case 'Or':
+        case 'OR':
             result = first | second;
             break;
-        case 'Xor':
+        case 'XOR':
             result = first ^ second;
             break;
         case 'NAND':
-            result = ~(first & second);
+            result = ~(first & second) & 0xFFFFFFFFn;
             break;
         case 'NOR':
-            result = ~(first | second);
+            result = ~(first | second) & 0xFFFFFFFFn;
             break;
         case 'XNOR':
-            result = ~(first ^ second);
+            result = ~(first ^ second) & 0xFFFFFFFFn;
+            break;
+        case '+':
+            result = first + second;
+            break;
+        case '-':
+            result = first - second;
             break;
         default:
             result = first;
@@ -60,6 +67,8 @@ const calculate = (op) => {
     binValue.textContent = result.toString(2);
     decValue.textContent = result.toString(10);
     octValue.textContent = result.toString(8);
-    hexValue.textContent = result.toString(16);
+    hexValue.textContent = result.toString(16).toUpperCase();
+
     answer.textContent = result.toString(2);
+    centerFn(answer);
 }
